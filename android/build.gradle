@@ -1,11 +1,26 @@
 buildscript {
+
+    def getMyVersionCode = { 
+        def code = project.hasProperty('versionCode') ? versionCode.toInteger() : 1
+        println "VersionCode is set to $code"
+        return code
+    }
+
+    def getMyVersionName = {
+        def name = project.hasProperty('versionName') ? versionName : "1.0"
+        println "VersionName is set to $name"
+       return name
+    }
+
     ext {
         buildToolsVersion = "34.0.0"
         minSdkVersion = 21
         compileSdkVersion = 34
         targetSdkVersion = 34
         ndkVersion = "25.1.8937393"
-        kotlinVersion = "1.8.0"
+        kotlinVersion = "1.8.0"    
+        versionName = getMyVersionName()
+        versionCode = getMyVersionCode()
     }
     repositories {
         google()
